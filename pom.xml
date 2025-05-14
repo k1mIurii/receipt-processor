@@ -11,8 +11,8 @@
 	<groupId>com.assessment</groupId>
 	<artifactId>receipt-processor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Receipt Processor</name>
+	<description>Receipt Processor App</description>
 	<url/>
 	<licenses>
 		<license/>
