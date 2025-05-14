@@ -10,7 +10,8 @@ import java.math.BigDecimal;
 public class MultipleOfQuarterCalculator implements PointCalculator{
     @Override
     public void calculate(Receipt receipt, Point point) {
-        BigDecimal[] result = receipt.getTotal().divideAndRemainder(new BigDecimal("0.25"));
+        BigDecimal total = new BigDecimal(receipt.getTotal());
+        BigDecimal[] result = total.divideAndRemainder(new BigDecimal("0.25"));
         if (result[1].compareTo(BigDecimal.ZERO) == 0) {
             point.setPoints(point.getPoints() + 25);
         }

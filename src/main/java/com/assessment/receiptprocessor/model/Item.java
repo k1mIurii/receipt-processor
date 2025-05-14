@@ -1,15 +1,19 @@
 package com.assessment.receiptprocessor.model;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Builder;
 import lombok.Data;
-
-import java.math.BigDecimal;
 
 @Data
 @Builder
 public class Item {
 
+    @NotNull
+    @Pattern(regexp = "^[\\w\\s\\-]+$")
     private String shortDescription;
 
-    private BigDecimal price;
+    @NotNull
+    @Pattern(regexp = "^\\d+\\.\\d{2}$")
+    private String price;
 }

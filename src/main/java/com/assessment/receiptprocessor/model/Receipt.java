@@ -1,9 +1,10 @@
 package com.assessment.receiptprocessor.model;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Builder;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -12,13 +13,20 @@ import java.util.List;
 @Builder
 public class Receipt {
 
+    @NotNull
+    @Pattern(regexp = "^[\\w\\s\\-&]+$")
     private String retailer;
 
+    @NotNull
     private LocalDate purchaseDate;
 
+    @NotNull
     private LocalTime purchaseTime;
 
-    private BigDecimal total;
+    @NotNull
+    @Pattern(regexp = "^\\d+\\.\\d{2}$")
+    private String total;
 
+    @NotNull
     private List<Item> items;
 }

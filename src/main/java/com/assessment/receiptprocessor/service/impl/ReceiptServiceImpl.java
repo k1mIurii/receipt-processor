@@ -34,9 +34,10 @@ public class ReceiptServiceImpl implements ReceiptService {
     public String getPoints(String id) {
         Receipt receipt = DATA.get(id);
         Point point = new Point(0);
-        if (null != receipt) {
-            calculators.forEach(calculator -> calculator.calculate(receipt, point));
+        if (null == receipt) {
+            throw new IllegalStateException();
         }
+        calculators.forEach(calculator -> calculator.calculate(receipt, point));
         return String.format(TEMPLATE, "points", point.getPoints());
     }
 }

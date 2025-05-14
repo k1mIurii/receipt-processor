@@ -15,7 +15,8 @@ public class TrimmedLengthCalculator implements PointCalculator {
         int total = 0;
         for (Item item : receipt.getItems()) {
             if (item.getShortDescription().trim().length() % 3 == 0) {
-                total += item.getPrice().multiply(new BigDecimal("0.2")).setScale(0, RoundingMode.UP).intValue();
+                BigDecimal price = new BigDecimal(item.getPrice());
+                total += price.multiply(new BigDecimal("0.2")).setScale(0, RoundingMode.UP).intValue();
             }
         }
         point.setPoints(point.getPoints() + total);

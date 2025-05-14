@@ -2,6 +2,7 @@ package com.assessment.receiptprocessor.controller;
 
 import com.assessment.receiptprocessor.model.Receipt;
 import com.assessment.receiptprocessor.service.ReceiptService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ public class ReceiptController {
     private final ReceiptService receiptService;
 
     @PostMapping(path = "/process")
-    public ResponseEntity<String> process(@RequestBody Receipt receipt) {
+    public ResponseEntity<String> process(@Valid @RequestBody Receipt receipt) {
         return new ResponseEntity<>(receiptService.process(receipt), HttpStatus.OK);
     }
 
